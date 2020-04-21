@@ -7,9 +7,11 @@ from bs4 import BeautifulSoup
 driver = webdriver.Chrome('C:/Program Files (x86)/Google/ChromeDriver/chromedriver')
 driver.implicitly_wait(3)
 
+#수집 진행 url 접속
 driver.get('https://www.yanolja.com/hotel/3012531/reviews')
 
 
+### 자동 스크롤링 ###
 SCROLL_PAUSE_TIME = 1
 
 # Get scroll height
@@ -18,6 +20,7 @@ last_height = driver.execute_script("return document.body.scrollHeight")
 while True:
     # Scroll down to bottom
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    # 추가 로드를 위한 마우스 스크롤 직접 동작
     pyautogui.scroll(-100)
     pyautogui.scroll(100)
 
